@@ -118,5 +118,9 @@ df, bin_signal = TopDom(file=file, window=5, chrom='chr21', res=100000,
                         peak_find_funk=signal_func.detect_local_extrema,
                         filter_func=signal_func.statFilter, bin_signal=True)
 
+df, bin_signal = TopDom(file=file, window=5, chrom='chr21', res=100000,
+                        peak_find_funk=signal_func.find_min,
+                        filter_func=signal_func.statFilter, bin_signal=True)
+
 print(df)
 print(bin_signal)
