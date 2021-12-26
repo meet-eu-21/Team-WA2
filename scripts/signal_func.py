@@ -169,12 +169,12 @@ def get_downstream_triangle(matrix, i, size):
     return s_matrix[idu]
 
 
-def add_boundry(p_vals, s, e):
+def add_boundary(p_vals, s, e):
     good_pval = np.where(p_vals[s:e] < 0.05, 0, 1)
     if np.sum(good_pval) == 0:
         return 'boundary'
     else:
-        return 'domein'
+        return 'domain'
     
     
     

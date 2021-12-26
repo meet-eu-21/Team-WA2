@@ -6,23 +6,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 import signal_func
 import pandas as pd
+import argparse
 
 
 def TopDom(file, window, chrom, res, peak_find_funk=None,
-           smoove_func=False, filter_func=False, bin_signal=False):
+           smooth_func=False, filter_func=False, bin_signal=False):
     matrix = np.genfromtxt(file, delimiter='\t')
     s = matrix.shape
-    assert s[0] == s[1], 'Unknwon Type of matrix file'
+    assert s[0] == s[1], 'Unknown Type of matrix file'
     n_bins = s[0]
     bin_sig = binSignal(matrix, window, n_bins)
     no_gap_region = find_not_gap(matrix, window)
     all_peaks = []
     df = []
     for i in no_gap_region:
-        print('prosses:', i[0], i[1])
+        print('process:', i[0], i[1])
         ana_reg = bin_sig[i[0]:i[1]]
-        if smoove_func is not False:
-            ana_reg = smoove_func(ana_reg)
+        if smooth_func is not False:
+            ana_reg = smooth_func(ana_reg)
         peaks = peak_find_funk(ana_reg)
         if filter_func is not False:
             if filter_func != signal_func.statFilter:
@@ -36,7 +37,7 @@ def TopDom(file, window, chrom, res, peak_find_funk=None,
     all_peaks = list(all_peaks)
     all_peaks.extend([no_gap_region[i][1] for i in range(len(no_gap_region))])
     df = pd.DataFrame(all_peaks)
-    df['type'] = 'domein'
+    df['type'] = 'domain'
     df2 = [no_gap_region[i][0]-1 for i in range(len(no_gap_region))]
     df2 = pd.DataFrame(df2)
     df2['type'] = 'gap'
@@ -52,8 +53,8 @@ def TopDom(file, window, chrom, res, peak_find_funk=None,
     df.insert(6, 'size', df['to.coord']-df['from.coord'])
     if filter_func == signal_func.statFilter:
         for index, row in df.iterrows():
-            if row['type'] == 'domein':
-                df.loc[index, 'type'] = signal_func.add_boundry(p_values,
+            if row['type'] == 'domain':
+                df.loc[index, 'type'] = signal_func.add_boundary(p_values,
                                                                 row['from.id'],
                                                                 row['to.id'])
     bin_sig = pd.DataFrame(bin_sig)
@@ -112,15 +113,30 @@ def plot_matrix(file, peaks):
     plt.show()
 
 
-file = 'contact_map.tsv'
+parser = argparse.ArgumentParser(description = "Calculate TopDop algorihm for a given input file.")
+parser.add_argument("-i", "--input", help="input file (a .tsv contact map)", required=True)
+parser.add_argument("-r", "--resolution", help="resolution (either 100k or 25k)", required=False)
+args = vars(parser.parse_args())
+if args["input"]:
+	file = args["input"].strip()
+	chrom = file.split(".")[-2].split("_")[-1]
+if not args['resolution']:
+	res = 100000
+elif args['resolution'] in ["100k", "25k"]:
+	res = int(args["resolution"][:-1])*1000
+else:
+	print("Wrong resolution value. Choose from [25k, 100k] and try again.")
+	exit()
 
-df, bin_signal = TopDom(file=file, window=5, chrom='chr21', res=100000,
+df, bin_signal = TopDom(file=file, window=5, chrom=chrom, res=res,
                         peak_find_funk=signal_func.detect_local_extrema,
                         filter_func=signal_func.statFilter, bin_signal=True)
 
-df, bin_signal = TopDom(file=file, window=5, chrom='chr21', res=100000,
+df, bin_signal = TopDom(file=file, window=5, chrom=chrom, res=res,
                         peak_find_funk=signal_func.find_min,
                         filter_func=signal_func.statFilter, bin_signal=True)
 
-print(df)
-print(bin_signal)
+#print(df)
+#print(bin_signal)
+df.to_csv("dataframe_%s" %chrom)
+df.to_csv("bin_signal_%s" %chrom)
