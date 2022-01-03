@@ -1,0 +1,110 @@
+[1] "Overlap between /home/eu_plus_3/Team-WA2/scripts/topdom_outputs/for_overlap_scores_11 and /home/eu_plus_3/Team-WA2/scripts/topdom_outputs/for_overlap_scores_11"
+TopDomOverlapScores, list:
+Chromosomes: [n = 23] ‘chr10’, ‘chr11’, ‘chr12’, ‘chr13’, ‘chr14’, ‘chr15’, ‘chr16’, ‘chr17’, ‘chr18’, ‘chr19’, ‘chr1’, ‘chr20’, ‘chr21’, ‘chr22’, ‘chr2’, ‘chr3’, ‘chr4’, ‘chr5’, ‘chr6’, ‘chr7’, ‘chr8’, ‘chr9’, ‘chrX’
+Summary of reference domain lengths:
+             Min. 1st Qu. Median Mean 3rd Qu. Max. NA's count
+chr10          NA      NA     NA  NaN      NA   NA  123   123
+chr11          NA      NA     NA  NaN      NA   NA  125   125
+chr12          NA      NA     NA  NaN      NA   NA  137   137
+chr13          NA      NA     NA  NaN      NA   NA   88    88
+chr14          NA      NA     NA  NaN      NA   NA   81    81
+chr15          NA      NA     NA  NaN      NA   NA   83    83
+chr16          NA      NA     NA  NaN      NA   NA   68    68
+chr17          NA      NA     NA  NaN      NA   NA   87    87
+chr18          NA      NA     NA  NaN      NA   NA   63    63
+chr19          NA      NA     NA  NaN      NA   NA   57    57
+chr1           NA      NA     NA  NaN      NA   NA  209   209
+chr20          NA      NA     NA  NaN      NA   NA   61    61
+chr21          NA      NA     NA  NaN      NA   NA   30    30
+chr22          NA      NA     NA  NaN      NA   NA   43    43
+chr2           NA      NA     NA  NaN      NA   NA  196   196
+chr3           NA      NA     NA  NaN      NA   NA  179   179
+chr4           NA      NA     NA  NaN      NA   NA  166   166
+chr5           NA      NA     NA  NaN      NA   NA  151   151
+chr6           NA      NA     NA  NaN      NA   NA  148   148
+chr7           NA      NA     NA  NaN      NA   NA  151   151
+chr8           NA      NA     NA  NaN      NA   NA  121   121
+chr9           NA      NA     NA  NaN      NA   NA  105   105
+chrX           NA      NA     NA  NaN      NA   NA  126   126
+whole genome   NA      NA     NA  NaN      NA   NA 2598  2598
+Summary of best scores:
+             Min. 1st Qu. Median Mean 3rd Qu. Max. NA's count
+chr10          NA      NA     NA  NaN      NA   NA  123   123
+chr11          NA      NA     NA  NaN      NA   NA  125   125
+chr12          NA      NA     NA  NaN      NA   NA  137   137
+chr13          NA      NA     NA  NaN      NA   NA   88    88
+chr14          NA      NA     NA  NaN      NA   NA   81    81
+chr15          NA      NA     NA  NaN      NA   NA   83    83
+chr16          NA      NA     NA  NaN      NA   NA   68    68
+chr17          NA      NA     NA  NaN      NA   NA   87    87
+chr18          NA      NA     NA  NaN      NA   NA   63    63
+chr19          NA      NA     NA  NaN      NA   NA   57    57
+chr1           NA      NA     NA  NaN      NA   NA  209   209
+chr20          NA      NA     NA  NaN      NA   NA   61    61
+chr21          NA      NA     NA  NaN      NA   NA   30    30
+chr22          NA      NA     NA  NaN      NA   NA   43    43
+chr2           NA      NA     NA  NaN      NA   NA  196   196
+chr3           NA      NA     NA  NaN      NA   NA  179   179
+chr4           NA      NA     NA  NaN      NA   NA  166   166
+chr5           NA      NA     NA  NaN      NA   NA  151   151
+chr6           NA      NA     NA  NaN      NA   NA  148   148
+chr7           NA      NA     NA  NaN      NA   NA  151   151
+chr8           NA      NA     NA  NaN      NA   NA  121   121
+chr9           NA      NA     NA  NaN      NA   NA  105   105
+chrX           NA      NA     NA  NaN      NA   NA  126   126
+whole genome   NA      NA     NA  NaN      NA   NA 2598  2598
+[1] "Overlap between /home/eu_plus_3/Team-WA2/scripts/topdom_outputs/for_overlap_scores_11 and /home/eu_plus_3/Team-WA2/scripts/topdom_outputs/for_overlap_scores_11"
+TopDomOverlapScores, list:
+Chromosomes: [n = 23] ‘chr10’, ‘chr11’, ‘chr12’, ‘chr13’, ‘chr14’, ‘chr15’, ‘chr16’, ‘chr17’, ‘chr18’, ‘chr19’, ‘chr1’, ‘chr20’, ‘chr21’, ‘chr22’, ‘chr2’, ‘chr3’, ‘chr4’, ‘chr5’, ‘chr6’, ‘chr7’, ‘chr8’, ‘chr9’, ‘chrX’
+Summary of reference domain lengths:
+             Min. 1st Qu. Median Mean 3rd Qu. Max. NA's count
+chr10          NA      NA     NA  NaN      NA   NA  123   123
+chr11          NA      NA     NA  NaN      NA   NA  125   125
+chr12          NA      NA     NA  NaN      NA   NA  137   137
+chr13          NA      NA     NA  NaN      NA   NA   88    88
+chr14          NA      NA     NA  NaN      NA   NA   81    81
+chr15          NA      NA     NA  NaN      NA   NA   83    83
+chr16          NA      NA     NA  NaN      NA   NA   68    68
+chr17          NA      NA     NA  NaN      NA   NA   87    87
+chr18          NA      NA     NA  NaN      NA   NA   63    63
+chr19          NA      NA     NA  NaN      NA   NA   57    57
+chr1           NA      NA     NA  NaN      NA   NA  209   209
+chr20          NA      NA     NA  NaN      NA   NA   61    61
+chr21          NA      NA     NA  NaN      NA   NA   30    30
+chr22          NA      NA     NA  NaN      NA   NA   43    43
+chr2           NA      NA     NA  NaN      NA   NA  196   196
+chr3           NA      NA     NA  NaN      NA   NA  179   179
+chr4           NA      NA     NA  NaN      NA   NA  166   166
+chr5           NA      NA     NA  NaN      NA   NA  151   151
+chr6           NA      NA     NA  NaN      NA   NA  148   148
+chr7           NA      NA     NA  NaN      NA   NA  151   151
+chr8           NA      NA     NA  NaN      NA   NA  121   121
+chr9           NA      NA     NA  NaN      NA   NA  105   105
+chrX           NA      NA     NA  NaN      NA   NA  126   126
+whole genome   NA      NA     NA  NaN      NA   NA 2598  2598
+Summary of best scores:
+             Min. 1st Qu. Median Mean 3rd Qu. Max. NA's count
+chr10          NA      NA     NA  NaN      NA   NA  123   123
+chr11          NA      NA     NA  NaN      NA   NA  125   125
+chr12          NA      NA     NA  NaN      NA   NA  137   137
+chr13          NA      NA     NA  NaN      NA   NA   88    88
+chr14          NA      NA     NA  NaN      NA   NA   81    81
+chr15          NA      NA     NA  NaN      NA   NA   83    83
+chr16          NA      NA     NA  NaN      NA   NA   68    68
+chr17          NA      NA     NA  NaN      NA   NA   87    87
+chr18          NA      NA     NA  NaN      NA   NA   63    63
+chr19          NA      NA     NA  NaN      NA   NA   57    57
+chr1           NA      NA     NA  NaN      NA   NA  209   209
+chr20          NA      NA     NA  NaN      NA   NA   61    61
+chr21          NA      NA     NA  NaN      NA   NA   30    30
+chr22          NA      NA     NA  NaN      NA   NA   43    43
+chr2           NA      NA     NA  NaN      NA   NA  196   196
+chr3           NA      NA     NA  NaN      NA   NA  179   179
+chr4           NA      NA     NA  NaN      NA   NA  166   166
+chr5           NA      NA     NA  NaN      NA   NA  151   151
+chr6           NA      NA     NA  NaN      NA   NA  148   148
+chr7           NA      NA     NA  NaN      NA   NA  151   151
+chr8           NA      NA     NA  NaN      NA   NA  121   121
+chr9           NA      NA     NA  NaN      NA   NA  105   105
+chrX           NA      NA     NA  NaN      NA   NA  126   126
+whole genome   NA      NA     NA  NaN      NA   NA 2598  2598

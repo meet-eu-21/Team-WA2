@@ -68,7 +68,7 @@ sumHicmat=np.sum(binned_map,0)
 mini = np.mean(sumHicmat)-np.std(sumHicmat)*1.5 #min value of filtering
 maxi = np.mean(sumHicmat)+np.std(sumHicmat)*1.5 #max value of filtering
 binsaved=np.where(np.logical_and(mini < sumHicmat,sumHicmat < maxi)) #coord of bin to save
-filtered_map=binned_map[binsaved[1],:] #save on raw
+filtered_map=binned_map[binsaved[1],:] #save on row
 filtered_map=filtered_map[:,binsaved[1]] #save on col
 print("after filtering : ",np.shape(filtered_map))#,np.shape(color_vecseg))
 

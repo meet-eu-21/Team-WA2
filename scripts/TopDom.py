@@ -116,6 +116,7 @@ def plot_matrix(file, peaks):
 parser = argparse.ArgumentParser(description = "Calculate TopDop algorihm for a given input file.")
 parser.add_argument("-i", "--input", help="input file (a .tsv contact map)", required=True)
 parser.add_argument("-r", "--resolution", help="resolution (either 100k or 25k)", required=False)
+parser.add_argument('-d', '--outputdir', help="directory to write output files to", required=False)
 args = vars(parser.parse_args())
 if args["input"]:
 	file = args["input"].strip()
@@ -127,6 +128,10 @@ elif args['resolution'] in ["100k", "25k"]:
 else:
 	print("Wrong resolution value. Choose from [25k, 100k] and try again.")
 	exit()
+if args['outputdir']:
+	outputdir = args['outputdir']
+else:
+	outputdir =  ''
 
 df, bin_signal = TopDom(file=file, window=5, chrom=chrom, res=res,
                         peak_find_funk=signal_func.detect_local_extrema,
@@ -136,7 +141,6 @@ df, bin_signal = TopDom(file=file, window=5, chrom=chrom, res=res,
                         peak_find_funk=signal_func.find_min,
                         filter_func=signal_func.statFilter, bin_signal=True)
 
-#print(df)
-#print(bin_signal)
-df.to_csv("dataframe_%s" %chrom)
-df.to_csv("bin_signal_%s" %chrom)
+#df.to_csv(outputdir+"dataframe_%s.csv" %chrom, index=False)
+#bin_signal.to_csv(outputdir+"bin_signal_%s.csv" %chrom, index=False)
+df.to_csv(outputdir+"for_overlap_scores_%s.csv" %chrom, index=False, columns=["chr", "from.coord", "to.coord", "type"])
