@@ -117,6 +117,13 @@ parser = argparse.ArgumentParser(description = "Calculate TopDop algorihm for a 
 parser.add_argument("-i", "--input", help="input file (a .tsv contact map)", required=True)
 parser.add_argument("-r", "--resolution", help="resolution (either 100k or 25k)", required=False)
 parser.add_argument('-d', '--outputdir', help="directory to write output files to", required=False)
+
+parser.add_argument('-p', '--peakfindfunc', help="Function used to finding peaks.", required=False)
+parser.add_argument('-s', '--smoothfunc', help="Smoothing function.", required=False)
+parser.add_argument('-f', '--filterfunc', help="Function used to filter outputs.", required=False)
+
+parser.add_argument('-o', '--outputfile', help="Name of the output.", required=False)
+
 args = vars(parser.parse_args())
 if args["input"]:
 	file = args["input"].strip()
@@ -133,14 +140,20 @@ if args['outputdir']:
 else:
 	outputdir =  ''
 
-df, bin_signal = TopDom(file=file, window=5, chrom=chrom, res=res,
-                        peak_find_funk=signal_func.detect_local_extrema,
-                        filter_func=signal_func.statFilter, bin_signal=True)
+if args['peakfindfunc']: peakfindfunc = args['peakfindfunc']
+else: peakfindfunc =  ''
+if args['smoothfunc']: smoothfunc = args['smoothfunc']
+else: smoothfunc =  ''
+if args['filterfunc']: filterfunc = args['filterfunc']
+else: filterfunc =  ''
+if args['outputfile']: outputfile = args['outputfile']
+else: outputfile =  ''
 
-df, bin_signal = TopDom(file=file, window=5, chrom=chrom, res=res,
-                        peak_find_funk=signal_func.find_min,
-                        filter_func=signal_func.statFilter, bin_signal=True)
 
-#df.to_csv(outputdir+"dataframe_%s.csv" %chrom, index=False)
+df = TopDom(file=file, window=5, chrom=chrom, res=res,
+            peak_find_funk=signal_func.detect_local_extrema,
+            filter_func=signal_func.statFilter, bin_signal=False)
+
+df.to_csv(outputdir+"dataframe_%s%s.csv" %("_"+outputfile+"__", chrom), index=False)
 #bin_signal.to_csv(outputdir+"bin_signal_%s.csv" %chrom, index=False)
-df.to_csv(outputdir+"for_overlap_scores_%s.csv" %chrom, index=False, columns=["chr", "from.coord", "to.coord", "type"])
+df.to_csv(outputdir+"for_overlap_scores_%s%s.csv" %("_"+outputfile+"__", chrom), index=False, columns=["chr", "from.coord", "to.coord", "type"])
