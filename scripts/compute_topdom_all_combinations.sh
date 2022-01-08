@@ -6,31 +6,29 @@ chromosomes+=("X")
 
 echo "start"
 
-for i in "${chromosomes[@]}";
+for p in "${peak_find_funk[@]}";
 do
+    peakfindfunc="-p $p"
 
-    echo "Chromosome $i"
-    basic_command="python3 TopDom.py -i /home/eu_plus_3/Team-WA2/normalisation/NORMALnormalisation/normalised_matrices/contact_map_chr$i.tsv -r 100k -d ./combination_outputs/"
-    for p in "${peak_find_funk[@]}";
+    for s in "${smooth_func[@]}";
     do
-        peakfindfunc="-p $p"
+        smoothfunc="-s $s"
 
-        for s in "${smooth_func[@]}";
+        for f in "${filter_func[@]}";
         do
-            smoothfunc="-s $s"
-
-            for f in "${filter_func[@]}";
+            filterfunc="-f $f"
+            outfile="-o ${p}_${s}_${f}"
+            for i in "${chromosomes[@]}";
             do
-                filterfunc="-f $f"
-                outfile="-o ${p}_${s}_${f}"
+                basic_command="python3 TopDom.py -i /home/eu_plus_3/Team-WA2/normalisation/NORMALnormalisation/normalised_matrices/contact_map_chr$i.tsv -r 100k -d ./combination_outputs/"
                 echo "Topdom for chromosome $i contact map."
-                echo "$basic_command $peakfindfunc $smoothfunc $filterfunc $outfile"
+                echo "Chromosome $i $outfile"
                 eval "$basic_command $peakfindfunc $smoothfunc $filterfunc $outfile"
                 echo "Chromosome $i done."
             done
+            cat -n for_overlap_scores__${outfile}__chr*.csv | sort -uk2 | sort -nk1 | cut -f2- > for_overlap_scores__${outfile}__allchr.csv
         done
     done
-
 done
 
 echo "Done!"
