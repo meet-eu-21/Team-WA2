@@ -117,11 +117,9 @@ parser = argparse.ArgumentParser(description = "Calculate TopDop algorihm for a 
 parser.add_argument("-i", "--input", help="input file (a .tsv contact map)", required=True)
 parser.add_argument("-r", "--resolution", help="resolution (either 100k or 25k)", required=False)
 parser.add_argument('-d', '--outputdir', help="directory to write output files to", required=False)
-
 parser.add_argument('-p', '--peakfindfunc', help="Function used to finding peaks.", required=False)
 parser.add_argument('-s', '--smoothfunc', help="Smoothing function.", required=False)
 parser.add_argument('-f', '--filterfunc', help="Function used to filter outputs.", required=False)
-
 parser.add_argument('-o', '--outputfile', help="Name of the output.", required=False)
 
 args = vars(parser.parse_args())
@@ -140,20 +138,37 @@ if args['outputdir']:
 else:
 	outputdir =  ''
 
-if args['peakfindfunc']: peakfindfunc = args['peakfindfunc']
+if args['peakfindfunc']:
+	if args['peakfindfunc']=="None": peakfindfunc = None
+	elif args['peakfindfunc']=="find_min": peakfindfunc = peakfindfunc = signal_func.find_min
+	elif args['peakfindfunc']=="detect_local_extrema": peakfindfunc = signal_func.detect_local_extrema
+	elif args['peakfindfunc']=="find_peaks": peakfindfunc = signal_func.find_peaks
+	elif args['peakfindfunc']=="find_peaks_2": peakfindfunc = signal_func.find_peaks_2
 else: peakfindfunc =  ''
-if args['smoothfunc']: smoothfunc = args['smoothfunc']
+
+if args['smoothfunc']:
+	if args['smoothfunc'] == "False": smoothfunc=False
+	elif args['smoothfunc'] == "savgol_filter": smoothfunc=signal_func.savgol_filter
+        elif args['smoothfunc'] == "smooth": smoothfunc=signal_func.smooth
+        elif args['smoothfunc'] == "qspline": smoothfunc=signal_func.qspline
 else: smoothfunc =  ''
-if args['filterfunc']: filterfunc = args['filterfunc']
+
+if args['filterfunc']:
+	if args['filterfunc']=="False": filterfunc = False
+	elif args['filterfunc']=="statFilter": filterfunc = signal_func.statFilter
+        elif args['filterfunc']=="filter_peaks": filterfunc = signal_func.filter_peaks
 else: filterfunc =  ''
-if args['outputfile']: outputfile = args['outputfile']
+
+if args['outputfile']:
+	outputfile = args['outputfile']
 else: outputfile =  ''
 
 
-df = TopDom(file=file, window=5, chrom=chrom, res=res,
-            peak_find_funk=signal_func.detect_local_extrema,
-            filter_func=signal_func.statFilter, bin_signal=False)
 
+df = TopDom(file=file, window=5, chrom=chrom, res=res,
+            peak_find_funk=peakfindfunc,
+            filter_func=filterfunc, smooth_func = smoothfunc,
+            bin_signal=False)
 df.to_csv(outputdir+"dataframe_%s%s.csv" %("_"+outputfile+"__", chrom), index=False)
 #bin_signal.to_csv(outputdir+"bin_signal_%s.csv" %chrom, index=False)
 df.to_csv(outputdir+"for_overlap_scores_%s%s.csv" %("_"+outputfile+"__", chrom), index=False, columns=["chr", "from.coord", "to.coord", "type"])

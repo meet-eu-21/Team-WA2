@@ -10,3 +10,4 @@ do
     echo "Chromosome" $i "done"
 done
 
+cat ./topdom_outputs/for_overlap_scores_chr*.csv >> ./topdom_outputs/for_overlap_scores_1.csv
