@@ -10,11 +10,29 @@ Download, unpack and run!
 Run the PredictTadsWA2.sh script
 
 #### Options
-- chromosomes (default: all)
-- normalisation (default: normal)
-- peak finding function
-- smoothing function
-- peak filtering function
+- ```-c``` chromosomes (default: ```all```)
+
+  chromosomes for which you want the predictions to happen; if more than one, put the list in quotation marks: ```-c "1 2 3"```
+  
+  if ```-c all```, computations will be performed for 23 chromosomes, ```1 2 3 ... 21 22 X```
+  
+- ```-n``` normalisation (default: ```normal```)
+
+  an algorithm to be used to normalise the contact matrices 
+
+  ```-n normal``` an algorithm provided by Leopold Carron
+  
+  ```-n kr``` KR normalisation algorithm; runs longer, but may yield different results
+
+- ```-p``` peak finding function (default: ```find_peaks```, original TopDom uses: ```detect_local_extrema```)
+
+  ```find_min``` ```detect_local_extrema``` ```find_peaks``` ```find_peaks_2```
+- ```-s``` smoothing function (default: ```False```, original TopDom uses: ```False```)
+  
+  ```False``` ```savgol_filter``` ```smooth``` ```qspline```
+- ```-f``` peak filtering function (default: ```filter_peaks```, original TopDom uses: ```statFilter```)
+
+  ```False``` ```statFilter``` ```filter_peaks```
 
 ## Evaluate the results
 We have also provided the user with scripts for comparing two outputs to each other or your output to some reference TADs.
