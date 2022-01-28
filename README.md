@@ -29,7 +29,7 @@ Run the *PredictTadsWA2.sh* script with your selected options:
   ```find_min``` ```detect_local_extrema``` ```find_peaks``` ```find_peaks_2```
 - ```-s``` smoothing function (default: ```False```, original TopDom uses: ```False```)
   
-  ```False``` ```savgol_filter``` ```smooth``` ```qspline```
+  ```False``` ```savgol_filter``` ```qspline```
 - ```-f``` peak filtering function (default: ```filter_peaks```, original TopDom uses: ```statFilter```)
 
   ```False``` ```statFilter``` ```filter_peaks```
