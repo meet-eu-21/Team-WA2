@@ -44,20 +44,19 @@ Filtering function: ${filter_func}
 "
 
 ### normalisation ###
-#p=`pwd`
-#normalised_matrices=()
-#if [ $normalisation_type == "normal" ]; then
-#    cd ./normalisation/NORMALnormalisation/
-#    nm=`./normalise_all_chromosome_matrices.sh -c $chromosomes -i $p/$input_dir`
-#    normalised_matrices+=(`pwd`/$nm)
-##else
-##    cd ./normalisation/KRnormalisation/
-##    ./KRnormalise_all_chromosome_matrices.sh
-#fi
-#cd ../..
+p=`pwd`
+normalised_matrices=()
+if [ $normalisation_type == "normal" ]; then
+    cd ./normalisation/NORMALnormalisation/
+    nm=`./normalise_all_chromosome_matrices.sh -c $chromosomes -i $p/$input_dir`
+    normalised_matrices+=(`pwd`/$nm)
+else
+    cd ./normalisation/KRnormalisation/
+    ./KRnormalise_all_chromosome_matrices.sh
+fi
+cd ../..
 
 ### running TopDom ###
-normalised_matrices=("/home/eu_plus_3/Team-WA2/normalisation/NORMALnormalisation/normalised_matrices/contact_map_chr21.tsv" "/home/eu_plus_3/Team-WA2/normalisation/NORMALnormalisation/normalised_matrices/contact_map_chr20.tsv")
 echo ${normalised_matrices[*]}
 cd scripts/
 
