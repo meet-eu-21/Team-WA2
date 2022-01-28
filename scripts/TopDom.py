@@ -149,14 +149,14 @@ else: peakfindfunc =  ''
 if args['smoothfunc']:
 	if args['smoothfunc'] == "False": smoothfunc=False
 	elif args['smoothfunc'] == "savgol_filter": smoothfunc=signal_func.savgol_filter
-        elif args['smoothfunc'] == "smooth": smoothfunc=signal_func.smooth
-        elif args['smoothfunc'] == "qspline": smoothfunc=signal_func.qspline
+	elif args['smoothfunc'] == "smooth": smoothfunc=signal_func.smooth
+	elif args['smoothfunc'] == "qspline": smoothfunc=signal_func.qspline
 else: smoothfunc =  ''
 
 if args['filterfunc']:
 	if args['filterfunc']=="False": filterfunc = False
 	elif args['filterfunc']=="statFilter": filterfunc = signal_func.statFilter
-        elif args['filterfunc']=="filter_peaks": filterfunc = signal_func.filter_peaks
+	elif args['filterfunc']=="filter_peaks": filterfunc = signal_func.filter_peaks
 else: filterfunc =  ''
 
 if args['outputfile']:
@@ -169,6 +169,6 @@ df = TopDom(file=file, window=5, chrom=chrom, res=res,
             peak_find_funk=peakfindfunc,
             filter_func=filterfunc, smooth_func = smoothfunc,
             bin_signal=False)
-df.to_csv(outputdir+"dataframe_%s%s.csv" %("_"+outputfile+"__", chrom), index=False)
+#df.to_csv(outputdir+"dataframe_%s%s.csv" %("_"+outputfile+"__", chrom), index=False)
 #bin_signal.to_csv(outputdir+"bin_signal_%s.csv" %chrom, index=False)
-df.to_csv(outputdir+"for_overlap_scores_%s%s.csv" %("_"+outputfile+"__", chrom), index=False, columns=["chr", "from.coord", "to.coord", "type"])
+df.to_csv(outputdir+"domains_%s%s.csv" %("_"+outputfile+"_", chrom), index=False, columns=["chr", "from.coord", "to.coord", "type"])

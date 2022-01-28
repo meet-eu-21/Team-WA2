@@ -32,9 +32,17 @@ def compute_MoC(P,Q): # returns unnormalized sum
 
 file1= sys.argv[1]
 file2= sys.argv[2]
+
 P= pd.read_csv(file1,sep=',')
+P= P.rename(columns={'type':'tag'})
+P= P[P["chr"]!="chr"]
+P= P.sort_values(by=['chr', 'from.coord'])
 P= P[P["tag"]=="domain"]
+
 Q= pd.read_csv(file2,sep=',')
+Q= Q.rename(columns={'type':'tag'})
+Q= Q[Q["chr"]!="chr"]
+Q= Q.sort_values(by=['chr', 'from.coord'])
 Q= Q[Q["tag"]=="domain"]
 
 big_sum=0
@@ -55,7 +63,7 @@ for chr in chroms:
   sum,norm= compute_MoC(P[P["chr"]==chr],Q[Q["chr"]==chr])
   big_sum+=sum
   MoC.append(sum/norm)
-  print(sum/norm)
+  #print(sum/norm)
 
 chroms.append("Whole genome")
 res=pd.DataFrame(chroms,columns=["Chr"])

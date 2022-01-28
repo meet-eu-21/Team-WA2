@@ -183,6 +183,13 @@ write_full_scores = args[3]
 x=read.csv(paste(file1,"csv",sep='.'),sep=",",header = TRUE)
 y=read.csv(paste(file2,"csv",sep='.'),sep=",",header = TRUE)
 
+names(x)[4] = 'tag'
+x = subset(x, chr != "chr")
+x = x[order( x["chr"], x["from.coord"] ),]
+names(y)[4] = 'tag'
+y = subset(y, chr != "chr")
+y = y[order( y["chr"], y["from.coord"] ),]
+
 overlap_12 <- overlapScores(x, reference = y)
 overlap_21 <- overlapScores(y, reference = x)
 print(paste("Overlap between",file1,"and",file2,sep=" "))
